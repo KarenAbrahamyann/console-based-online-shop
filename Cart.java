@@ -22,9 +22,18 @@ public class Cart {
         for(Map.Entry<Product,Integer>entry:map.entrySet()){
             Product product =entry.getKey();
             Integer quantity=entry.getValue();
-            text+=product.getTitle() +"->"+quantity + " items";
+            text+=product.getProductId()+"" +product.getTitle() +"->"+quantity + " items";
         }
         return text;
+    }
+    public boolean removeItemsFromCartByID(int id) {
+        for (Product product : map.keySet()) {
+            if (product.getProductId() == id) {
+                map.remove(product);
+                return true;
+            }
+
+        }return false;
     }
     public double getTotalCost(){
         double cost=0;

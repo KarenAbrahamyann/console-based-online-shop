@@ -17,6 +17,12 @@ public class User {
     public double getBalance(){
         return balance;
     }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+
+    }
+
     public void addBalance (double money){
         this.balance+=money;
     }
@@ -52,5 +58,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String toString(){
+        return "Full name " +fullName
+                + "Username "+username + "balance" +balance+ "$";
     }
 }
