@@ -12,15 +12,24 @@ public class Database {
         initializeProducts();
     }
     public void initialiseUsers(){
-        allUsers.add(new User( " Bob Marley","bobmorley","pass"));
-        allUsers.add(new User( " John Weak","johnweak","pass"));
+        allUsers.add(new User( " Bob Marley ","bobmorley","pass"));
+        allUsers.add(new User( " John Weak ","johnweak","pass"));
 
     }
+
     public void initializeProducts(){
-        allProducts.add(new Product(12345,"Laptop",1000));
-        allProducts.add(new Product(23456,"Iphone",1500));
-        allProducts.add(new Product(34567,"Tablet",800));
+        allProducts.add(new Product( 12345," Laptop ", 1000));
+        allProducts.add(new Product( 23456," Iphone ", 1500));
+        allProducts.add(new Product( 34567," Tablet ", 800));
     }
+//    public void initializeProductWithDiscount(){
+//        for(Product product:allProducts){
+//            product.setPrice()*=0.9;
+//        }
+//    }
+
+
+
     public String getAllProductsText(){
         String text=" ";
         for(Product eachProduct:allProducts){
@@ -29,6 +38,7 @@ public class Database {
         }
         return text;
     }
+
     public Product findProductById(int id){
         for(Product eachProduct:allProducts){
             if(eachProduct.getProductId()==id){
@@ -37,6 +47,7 @@ public class Database {
         }
         return null;
     }
+
     public User findUserByUsername(String usernameInput){
     for(User user:allUsers){
         if(user.getUsername().equals(usernameInput)){
@@ -49,4 +60,5 @@ public class Database {
     public ArrayList<User> getAllUsers() {
         return allUsers;
     }
+
 }

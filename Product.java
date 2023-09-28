@@ -10,6 +10,11 @@ public class Product {
         this.title = title;
         this.price = price;
     }
+    public static class productWithDiscount extends Product {
+        public productWithDiscount(int productId, String name, double price) {
+            super(productId, name, price);
+        }
+    }
 
     public int getProductId() {
         return productId;

@@ -12,8 +12,9 @@ public class User {
         this.username=username;
         this.password=password;
         this.userCart=new Cart();
-        this.balance =0;
+        this.balance = 0;
     }
+
     public double getBalance(){
         return balance;
     }

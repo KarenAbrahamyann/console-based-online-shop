@@ -3,7 +3,7 @@ package Project_Shop;
 import java.util.Scanner;
 
 public class View {
-    private Scanner input;
+    private final  Scanner input;
     public View(){
         this.input = new Scanner(System.in);
     }

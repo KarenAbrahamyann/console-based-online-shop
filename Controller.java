@@ -48,8 +48,8 @@ public class Controller {
     }
     public void authorizeUser(){
         while (true) {
-            String username = view.getTextInput("Input your username");
-            String password = view.getTextInput("Input your password");
+            String username = view.getTextInput(" Input your username ");
+            String password = view.getTextInput(" Input your password ");
             User user = database.findUserByUsername(username);
             if (user == null) {
                 view.printMessage("---Wrong username---");
@@ -59,23 +59,25 @@ public class Controller {
                     this.user = user;
                     break;
                 } else {
-                    view.printMessage("Invalid password");
+                    view.printMessage(" Invalid password ");
                 }
             }
-        }//at this point user logged in
+        }
 
     }
-    private void addItemToCard(){
+    private void addItemToCard() throws Exception{
         getAllItemsFromShop();
-        int ID =view.getIntegerInput("From list above which product do you want to add ");
+        int ID =view.getIntegerInput(" From list above which product do you want to add ");
         Product product =database.findProductById(ID);
         if(product!=null){
-        int quantity=view.getIntegerInput("How many entries of this product do you want to add?");
-        //TODO expection for negative values
+        int quantity=view.getIntegerInput(" How many entries of this product do you want to add? ");
+        if(quantity<1){
+            throw new Exception("Quantity cant be less than 1");}
+        else{
         user.getUserCart().addProduct(product,quantity);
-        view.printMessage("Product"+product.getTitle()+"Was added to your cart!");
+        view.printMessage("Product"+product.getTitle()+" Was added to your cart! ");}
     }else {
-            view.printMessage("Error product not found ");
+            view.printMessage(" Error product not found ");
         }
         }
     public void getAllItemsFromShop(){
@@ -86,24 +88,24 @@ public class Controller {
     private void removeItemsFromCart(){
         checkUserCart();
 
-        int id = view.getIntegerInput("Which product do you want to remove? (input ID) ");
+        int id = view.getIntegerInput(" Which product do you want to remove? (input ID) ");
         Cart cart =user.getUserCart();
         boolean wasRemoved =cart.removeItemsFromCartByID(id);
         if(wasRemoved==true){
-            view.printMessage("Item with ID"+id+"was removed");
+            view.printMessage(" Item with ID"+id+"was removed ");
         }else{
-            view.printMessage("Item with ID"+id+"was not found");
+            view.printMessage(" Item with ID"+id+"was not found ");
         }
     }
     private void depositMoney()throws Exception{
         //ask how much
-        double amount=view.getDoubleInput("How much money would you like to deposit ");
+        double amount=view.getDoubleInput(" How much money would you like to deposit ");
         if(amount<0){
-            throw new Exception("Amount cant be minus");
+            throw new Exception(" Amount cant be minus ");
         }
         else{
             user.addBalance(amount);
-            view.printMessage(amount+"$ was added ,total balance"+user.getBalance()+"$");
+            view.printMessage(amount+" $ was added ,total balance "+user.getBalance()+" $ ");
         }
 
     }
